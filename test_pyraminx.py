@@ -37,35 +37,109 @@ def test_UPrime():
 
 
 def test_L():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+    
 
+    testPyraminx.faces[pyraminx.orientation.GREEN].tiles[1].color = "warm"
+    testPyraminx.faces[pyraminx.orientation.GREEN].tiles[6].color = "warmer"
+    testPyraminx.faces[pyraminx.orientation.GREEN].tiles[7].color = "warmier"
+    testPyraminx.faces[pyraminx.orientation.GREEN].tiles[4].color = "warmiest"
 
-def test_LPrime():
-    pass
+    testPyraminx.L()
+    
+    assert testPyraminx.faces[pyraminx.orientation.RED].tiles[6].color == "warm"
+    assert testPyraminx.faces[pyraminx.orientation.RED].tiles[3].color =="warmer"
+    assert testPyraminx.faces[pyraminx.orientation.RED].tiles[7].color == "warmier"
+    assert testPyraminx.faces[pyraminx.orientation.RED].tiles[8].color == "warmiest"
+
+def test_L_Prime():
+    testPyraminx = pyraminx.pyraminx()
+    
+
+    testPyraminx.faces[pyraminx.orientation.RED].tiles[6].color = "warm"
+    testPyraminx.faces[pyraminx.orientation.RED].tiles[3].color = "warmer"
+    testPyraminx.faces[pyraminx.orientation.RED].tiles[7].color = "warmier"
+    testPyraminx.faces[pyraminx.orientation.RED].tiles[8].color = "warmiest"
+
+    testPyraminx.L_Prime()
+    
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[1].color == "warm"
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[6].color =="warmer"
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[7].color == "warmier"
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[4].color == "warmiest"
+
 
 
 def test_l():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+
+    testPyraminx.l()
+
+    assert testPyraminx.faces[pyraminx.orientation.RED].tiles[8].color == "yellow"
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[4].color == "red"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[8].color == "green"
+
 
 
 def test_lPrime():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+
+    testPyraminx.l_Prime()
+
+    assert testPyraminx.faces[pyraminx.orientation.RED].tiles[8].color == "green"
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[4].color == "yellow"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[8].color == "red"
 
 
 def test_R():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+    
 
+    testPyraminx.faces[pyraminx.orientation.BLUE].tiles[1].color = "warm"
+    testPyraminx.faces[pyraminx.orientation.BLUE].tiles[4].color = "warmer"
+    testPyraminx.faces[pyraminx.orientation.BLUE].tiles[5].color = "warmier"
+    testPyraminx.faces[pyraminx.orientation.BLUE].tiles[6].color = "warmiest"
+    testPyraminx.R()
+    
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[1].color == "warm"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[4].color =="warmer"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[5].color == "warmier"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[6].color == "warmiest"
 
 def test_RPrime():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+    
+
+    testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[1].color = "warm"
+    testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[4].color = "warmer"
+    testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[5].color = "warmier"
+    testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[6].color = "warmiest"
+    testPyraminx.R_Prime()
+    
+    assert testPyraminx.faces[pyraminx.orientation.BLUE].tiles[1].color == "warm"
+    assert testPyraminx.faces[pyraminx.orientation.BLUE].tiles[4].color =="warmer"
+    assert testPyraminx.faces[pyraminx.orientation.BLUE].tiles[5].color == "warmier"
+    assert testPyraminx.faces[pyraminx.orientation.BLUE].tiles[6].color == "warmiest"
 
 
 def test_r():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+
+    testPyraminx.r()
+
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[8].color == "yellow"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[4].color =="blue"
+    assert testPyraminx.faces[pyraminx.orientation.BLUE].tiles[4].color == "green"
 
 
 def test_rPrime():
-    pass
+    testPyraminx = pyraminx.pyraminx()
+
+    testPyraminx.r_Prime()
+
+    assert testPyraminx.faces[pyraminx.orientation.GREEN].tiles[8].color == "blue"
+    assert testPyraminx.faces[pyraminx.orientation.YELLOW].tiles[4].color =="green"
+    assert testPyraminx.faces[pyraminx.orientation.BLUE].tiles[4].color == "yellow"
 
 
 def test_B():
