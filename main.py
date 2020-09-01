@@ -31,6 +31,7 @@ while(programActive):
         del(pyraminx)
         pyraminx = newPyraminx
         del(newPyraminx)
+        
     if userInput == "2":
         exit()
     if userInput == "1":

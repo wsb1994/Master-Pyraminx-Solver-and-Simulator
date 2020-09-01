@@ -322,9 +322,12 @@ class pyraminx:
         
         print()
         print("Input a number of moves to make(I recommend less than 10 million, highly recommend less than 1m, as 10m is very slow): ")
-        
-        numMoves = int(input())
-
+        numMoves = "";
+        try:
+            numMoves = int(input())
+        except:
+            numMoves = 0
+            print("invalid input, please try again using a decimal number please")
         for i in range(numMoves):
             
             moveInput = random.randint(0,24)
