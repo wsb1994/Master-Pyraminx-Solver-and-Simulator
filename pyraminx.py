@@ -122,7 +122,7 @@ class pyraminx:
         self.faces[orientation.RED].tiles[14], self.faces[orientation.YELLOW].tiles[15] = self.faces[orientation.YELLOW].tiles[15], self.faces[orientation.RED].tiles[14]
         self.faces[orientation.YELLOW].tiles[14], self.faces[orientation.RED].tiles[15] = self.faces[orientation.RED].tiles[15], self.faces[orientation.YELLOW].tiles[14]
     
-    ##Bug Watch
+    
     def Lw(self):
         self.L()
 
@@ -322,7 +322,7 @@ class pyraminx:
         
         print()
         print("Input a number of moves to make(I recommend less than 10 million, highly recommend less than 1m, as 10m is very slow): ")
-        numMoves = "";
+        numMoves = ""
         try:
             numMoves = int(input())
         except:
