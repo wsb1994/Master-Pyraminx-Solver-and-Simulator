@@ -13,5 +13,6 @@ def test_heuristic():
     testAlgorithm = Tree.node(testPyraminx, 0, 0)
     testAlgorithm.expand()
     testAlgorithm.expand()
-    testAlgorithm.Pyraminx.display_faces()
+
+    assert(testAlgorithm.pointers[0].moveToGetHere == "l")
 

@@ -32,12 +32,13 @@ class node:
       
         
     def expand(self):
-        if not self.pointers:
+        if self.pointers:
             return
 
 
         Child = pyraminx.pyraminx()
         for i in range(4):
+            Node = None
             if i == 0:
                 Child.l()
                 Node = node(Child, i + self.UUID, self.heuristic)
