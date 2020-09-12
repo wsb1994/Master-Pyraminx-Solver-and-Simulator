@@ -3,11 +3,13 @@ import math
 import copy
 import pyraminx
 #In progress
+
+
 class node:
     def __init__(self, Pyraminx, NodeUUID, parentHeuristic):
         self.Pyraminx = Pyraminx
         self.pointers = []
-
+        self.heuristic = 0
         self.parent = None
         self.moveToGetHere = "Initial"
 
@@ -16,9 +18,17 @@ class node:
         self.generate_heuristic(parentHeuristic)
         self.determine_validity()
 
-        if self.UUID == 0:
-            pass
+        
+    def __gt__(self, other):
+        if self.heuristic > other.heuristic:
+            return True
+        return False
 
+    def __lt__(self, other):
+        if self.heuristic < other.heuristic:
+            return True
+        return False
+        
     def generate_heuristic(self, parentHeuristic):
         self.heuristic = parentHeuristic + 1
 
@@ -28,7 +38,7 @@ class node:
         for face in range(4):
             for tile in range(16):
                 if Test.faces[face].tiles[tile].color != self.Pyraminx.faces[face].tiles[tile].color:
-                    checker = 0
+                    self.heuristic = 0
       
         
     def expand(self):
@@ -36,7 +46,7 @@ class node:
             return
 
 
-        Child = pyraminx.pyraminx()
+        Child = copy.deepcopy(self.Pyraminx)
         for i in range(4):
             Node = None
             if i == 0:
