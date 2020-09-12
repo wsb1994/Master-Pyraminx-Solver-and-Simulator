@@ -9,8 +9,10 @@ import solver
 #In progress
 def test_testSolver():
     testPyraminx = pyraminx.pyraminx()
-
     testPyraminx.l()
+    testPyraminx.u()
+    testPyraminx.b()
+    testPyraminx.r()
     
     testAlgorithm = Tree.node(testPyraminx, 0, 0)
 

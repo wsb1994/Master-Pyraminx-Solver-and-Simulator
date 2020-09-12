@@ -9,14 +9,13 @@ class node:
     def __init__(self, Pyraminx, NodeUUID, parentHeuristic):
         self.Pyraminx = Pyraminx
         self.pointers = []
-        self.heuristic = 0
+        self.heuristic = math.inf
         self.parent = None
         self.moveToGetHere = "Initial"
 
         self.UUID = NodeUUID
 
         self.generate_heuristic(parentHeuristic)
-        self.determine_validity()
 
         
     def __gt__(self, other):
@@ -30,15 +29,17 @@ class node:
         return False
         
     def generate_heuristic(self, parentHeuristic):
-        self.heuristic = parentHeuristic + 1
+        self.heuristic = 1
 
     def determine_validity(self):
         Test = pyraminx.pyraminx()
-        checker = 1
+        checker = 0
         for face in range(4):
             for tile in range(16):
                 if Test.faces[face].tiles[tile].color != self.Pyraminx.faces[face].tiles[tile].color:
-                    self.heuristic = 0
+                    checker = checker+1
+        if checker == 0:
+            self.heuristic = 0
       
         
     def expand(self):

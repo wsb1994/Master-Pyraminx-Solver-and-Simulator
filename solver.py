@@ -12,15 +12,21 @@ class solver:
             currentNode = heapq.heappop(self.heap)
             currentNode.determine_validity()
             if currentNode.heuristic == 0:
-                self.solved()
+                self.solved(currentNode)
                 print("lmao")
                 break
 
             currentNode.expand()
             for childNode in currentNode.pointers:
+                childNode.determine_validity()
+                if childNode.heuristic == 0:
+                    self.solved(childNode)
+                    print("lmao")
+                    break
                 heapq.heappush(self.heap, childNode)
             
 
-    def solved(self):
+    def solved(self, node):
         print("")
+        ##print parents in order
         exit()
