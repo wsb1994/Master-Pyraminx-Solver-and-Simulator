@@ -4,6 +4,7 @@ import copy
 import pyraminx as Pyraminx
 #In progress
 
+cornerPieces = [1, 3, 4, 8, 11, 13]
 
 class node:
     def __init__(self, Pyraminx, currentMoveDepth):
@@ -28,15 +29,18 @@ class node:
         return False
         
     def generate_heuristic(self):
+      
+
         testPyraminx = Pyraminx.pyraminx()
-        count = 0
+        count = 1
         for face in range(4):
-            for tile in range(16):
-                if testPyraminx.faces[face].tiles[tile].color != self.Pyraminx.faces[face].tiles[tile].color:
-                    count +=1
+            for tile in cornerPieces:
+                  if testPyraminx.faces[face].tiles[tile].color != self.Pyraminx.faces[face].tiles[tile].color:
+                      count +=1
         result = math.ceil(count/4)
         self.heuristic = result
         self.cost = self.currentMoveDepth + result
+
 
 
     def check_goal(self):
@@ -55,8 +59,6 @@ class node:
         if self.pointers:
             return
 
-
-        
         for i in range(12):
             Child = copy.deepcopy(self.Pyraminx)
             Node = None
@@ -98,22 +100,26 @@ class node:
             if i == 7:
                 Child.U()
                 Node = node(Child, 1 + self.currentMoveDepth)
-                Node.moveToGetHere = "Uw"
+                Node.moveToGetHere = "U"
             
             if i == 8:
+
                 Child.Lw()
                 Node = node(Child, 1 + self.currentMoveDepth)
                 Node.moveToGetHere = "Lw"
-             
+            
             if i == 9:
+
                 Child.Rw()
                 Node = node(Child, 1 + self.currentMoveDepth)
                 Node.moveToGetHere = "Rw"
+             
             
             if i == 10:
                 Child.Bw()
                 Node = node(Child, 1 + self.currentMoveDepth)
                 Node.moveToGetHere = "Bw"
+              
               
             if i == 11:
                 Child.Uw()

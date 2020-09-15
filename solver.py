@@ -6,27 +6,33 @@ import heapq
 class solver:
     def __init__(self, node):
         self.heap = []
+        self.bigCount = 0
+        self.path = []
+
         heapq.heappush(self.heap, node)
 
         while self.heap:
             currentNode = heapq.heappop(self.heap)
             currentNode.generate_heuristic()
-           # currentNode.Pyraminx.display_faces()
+
             if currentNode.check_goal():
                 self.solved(currentNode)
-                print("lmao")
                 return
+
             if not currentNode.pointers:
                 currentNode.expand()
+                self.bigCount += 1
+                
                 for childNode in currentNode.pointers:
                     childNode.generate_heuristic()
                     childNode.parent = currentNode
+                
                     heapq.heappush(self.heap, childNode)
             
 
     def solved(self, node):
-        print("solved state")
+        self.path.append("solved")
         while node != None:
-            print(node.moveToGetHere)
+            self.path.append(node.moveToGetHere)
             node = node.parent
         self.heap = []

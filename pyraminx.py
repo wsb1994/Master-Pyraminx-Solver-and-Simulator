@@ -92,17 +92,9 @@ class pyraminx:
     # Perform the L action # https://ruwix.com/online-puzzle-simulators/pyraminx-simulator.php as demonstrated here; Rotates the left tripiece roughly from the front.
     def L_Prime(self):
 
-        
-        self.faces[orientation.GREEN].tiles[4], self.faces[orientation.RED].tiles[13] =  self.faces[orientation.RED].tiles[13], self.faces[orientation.GREEN].tiles[4] 
-        self.faces[orientation.GREEN].tiles[10], self.faces[orientation.RED].tiles[14] =  self.faces[orientation.RED].tiles[14], self.faces[orientation.GREEN].tiles[10] 
-        self.faces[orientation.GREEN].tiles[11], self.faces[orientation.RED].tiles[8] =  self.faces[orientation.RED].tiles[8], self.faces[orientation.GREEN].tiles[11] 
-        self.faces[orientation.GREEN].tiles[9], self.faces[orientation.RED].tiles[15] =  self.faces[orientation.RED].tiles[15], self.faces[orientation.GREEN].tiles[9] 
+        self.L()
+        self.L()
 
-        self.faces[orientation.YELLOW].tiles[8], self.faces[orientation.GREEN].tiles[11] = self.faces[orientation.GREEN].tiles[11], self.faces[orientation.YELLOW].tiles[8] 
-        self.faces[orientation.YELLOW].tiles[13], self.faces[orientation.GREEN].tiles[4] = self.faces[orientation.GREEN].tiles[4], self.faces[orientation.YELLOW].tiles[13] 
-        self.faces[orientation.YELLOW].tiles[14], self.faces[orientation.GREEN].tiles[9] = self.faces[orientation.GREEN].tiles[9], self.faces[orientation.YELLOW].tiles[14] 
-        self.faces[orientation.YELLOW].tiles[15], self.faces[orientation.GREEN].tiles[10] = self.faces[orientation.GREEN].tiles[10], self.faces[orientation.YELLOW].tiles[15] 
-    
     def Lw_Prime(self):
         self.Lw()
         self.Lw()
@@ -120,8 +112,9 @@ class pyraminx:
         
         self.faces[orientation.RED].tiles[14], self.faces[orientation.YELLOW].tiles[15] = self.faces[orientation.YELLOW].tiles[15], self.faces[orientation.RED].tiles[14]
         self.faces[orientation.YELLOW].tiles[14], self.faces[orientation.RED].tiles[15] = self.faces[orientation.RED].tiles[15], self.faces[orientation.YELLOW].tiles[14]
-    
-    
+
+        self.faces[orientation.YELLOW].tiles[14], self.faces[orientation.YELLOW].tiles[15] = self.faces[orientation.YELLOW].tiles[15], self.faces[orientation.YELLOW].tiles[14]
+        self.faces[orientation.RED].tiles[15], self.faces[orientation.RED].tiles[14] = self.faces[orientation.RED].tiles[14], self.faces[orientation.RED].tiles[15]
     def Lw(self):
         self.L()
 
@@ -177,6 +170,9 @@ class pyraminx:
         self.faces[orientation.BLUE].tiles[6],self.faces[orientation.YELLOW].tiles[6] =  self.faces[orientation.YELLOW].tiles[6],self.faces[orientation.BLUE].tiles[6]
         self.faces[orientation.BLUE].tiles[12],self.faces[orientation.YELLOW].tiles[12] =  self.faces[orientation.YELLOW].tiles[12],self.faces[orientation.BLUE].tiles[12]
         self.faces[orientation.BLUE].tiles[13],self.faces[orientation.YELLOW].tiles[13] =  self.faces[orientation.YELLOW].tiles[13],self.faces[orientation.BLUE].tiles[13]
+
+        self.faces[orientation.GREEN].tiles[11], self.faces[orientation.GREEN].tiles[12] = self.faces[orientation.GREEN].tiles[12], self.faces[orientation.GREEN].tiles[11]
+        self.faces[orientation.BLUE].tiles[12],self.faces[orientation.BLUE].tiles[13] = self.faces[orientation.BLUE].tiles[13],self.faces[orientation.BLUE].tiles[12]
     def Rw_Prime(self):
 
         self.Rw()
@@ -320,7 +316,7 @@ class pyraminx:
     def randomize(self):
         
         print()
-        print("Input a number of moves to make(I recommend less than 10 million, highly recommend less than 1m, as 10m is very slow): ")
+        print("Input a number of moves to make(I recommend less than 10): ")
         numMoves = ""
         try:
             numMoves = int(input())
@@ -330,6 +326,43 @@ class pyraminx:
         for i in range(numMoves):
             
             moveInput = random.randint(0,12)
+
+            if moveInput == 0:
+                self.r_Prime()
+            if moveInput == 1:
+                self.l_Prime()
+            if moveInput == 2:
+                self.u_Prime()
+            if moveInput == 3:
+                self.b_Prime()
+            if moveInput == 4:
+                self.R_Prime()
+            if moveInput == 5:
+                self.L_Prime()
+            if moveInput == 6:
+                self.U_Prime()
+            if moveInput == 7:
+                self.B_Prime()
+            if moveInput == 8:
+                #pass
+                self.Rw_Prime()
+            if moveInput == 9:
+                self.Lw_Prime()
+            if moveInput == 10:
+                self.Uw_Prime()
+            if moveInput == 11:
+                self.Bw_Prime()
+           
+    def auto_randomize(self,depth):
+        
+        numMoves = int(depth)
+        previousInput = -1
+        for i in range(numMoves):
+            
+            
+            moveInput = random.randint(0,10)
+            while previousInput == moveInput:
+                moveInput = random.randint(0,10)
 
             if moveInput == 0:
                 self.r_Prime()

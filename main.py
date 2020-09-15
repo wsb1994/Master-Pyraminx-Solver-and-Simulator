@@ -22,6 +22,7 @@ while(programActive):
     print("1. randomize pyraminx")
     print("2. exit")
     print("3. reset")
+    print("4. to attempt to solve")
     print("The program is now listening for standard notation input")
     
     userInput: str = input()
@@ -29,7 +30,9 @@ while(programActive):
     if userInput == "4":
 
         node = Tree.node(copy.deepcopy(pyraminx), 0)
-        solver = solver.solver(node)
+        Solver = solver.solver(node)
+        for i in Solver.path:
+            print(i)
 
     if userInput == "3":
         
@@ -40,7 +43,7 @@ while(programActive):
         del(newPyraminx)
         
     if userInput == "2":
-        exit()
+        exit(0)
     if userInput == "1":
         pyraminx.randomize()
     else:
