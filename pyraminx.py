@@ -10,7 +10,6 @@ try:
 except ImportError as e:
     print("Error, missing package colorama, pip3 install colorama to resolve")
 
-init()
 asciiCache = asciiCache.asciiCache()
 
 # Standard enum for face matching the colors from the reference https://ruwix.com/online-puzzle-simulators/pyraminx-simulator.php simulator. 
@@ -240,7 +239,7 @@ class pyraminx:
         self.Bw()
         self.Bw()
 
-    def b_prime(self):
+    def b_Prime(self):
         self.b()
         self.b()
     
@@ -296,7 +295,7 @@ class pyraminx:
         if moveInput == "u'":
             self.u_Prime()
         if moveInput == "b'":
-            self.b_prime()
+            self.b_Prime()
         if moveInput == "Rw":
             self.Rw()
         if moveInput == "Lw":
@@ -330,56 +329,33 @@ class pyraminx:
             print("invalid input, please try again using a decimal number please")
         for i in range(numMoves):
             
-            moveInput = random.randint(0,24)
+            moveInput = random.randint(0,12)
 
             if moveInput == 0:
-                self.R()
-            if moveInput == 1:
-                self.L()
-            if moveInput == 2:
-                self.U()
-            if moveInput == 3:
-                self.B()
-            if moveInput == 4:
-                self.r()
-            if moveInput == 5:
-                self.l()
-            if moveInput == 6:
-                self.u()
-            if moveInput == 7:
-                self.b()
-            if moveInput == 8:
-                self.R_Prime()
-            if moveInput == 9:
-                self.L_Prime()
-            if moveInput == 10:
-                self.U_Prime()
-            if moveInput == 11:
-                self.B_Prime()
-            if moveInput == 12:
                 self.r_Prime()
-            if moveInput == 13:
+            if moveInput == 1:
                 self.l_Prime()
-            if moveInput == 14:
+            if moveInput == 2:
                 self.u_Prime()
-            if moveInput == 15:
+            if moveInput == 3:
+                self.b_Prime()
+            if moveInput == 4:
+                self.R_Prime()
+            if moveInput == 5:
+                self.L_Prime()
+            if moveInput == 6:
+                self.U_Prime()
+            if moveInput == 7:
                 self.B_Prime()
-            if moveInput == 16:
-                self.Rw()
-            if moveInput == 17:
-                self.Lw()
-            if moveInput == 18:
-                self.Uw()
-            if moveInput == 19:
-                self.Bw()
-            if moveInput == 20:
+            if moveInput == 8:
                 self.Rw_Prime()
-            if moveInput == 21:
+            if moveInput == 9:
                 self.Lw_Prime()
-            if moveInput == 22:
+            if moveInput == 10:
                 self.Uw_Prime()
-            if moveInput == 23:   
+            if moveInput == 11:
                 self.Bw_Prime()
+           
 
 def helper_Print(tile)-> str:
     face = ""

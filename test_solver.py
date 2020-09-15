@@ -9,14 +9,14 @@ import solver
 #In progress
 def test_testSolver():
     testPyraminx = pyraminx.pyraminx()
-    testPyraminx.l()
-    testPyraminx.u()
-    testPyraminx.b()
-    testPyraminx.r()
+    testPyraminx.l_Prime()
+    testPyraminx.r_Prime()
+    testPyraminx.b_Prime()
+    testPyraminx.u_Prime()
     
-    testAlgorithm = Tree.node(testPyraminx, 0, 0)
+    testAlgorithm = Tree.node(testPyraminx, 0)
 
     solver.solver(testAlgorithm)
-    assert(testAlgorithm.pointers[0].moveToGetHere == "l")
+    
 
 

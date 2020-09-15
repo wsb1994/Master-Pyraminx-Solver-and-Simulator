@@ -1,6 +1,8 @@
 import pyraminx as Pyraminx
 import sys
-
+import Tree
+import solver
+import copy
 pyraminx = Pyraminx.pyraminx()
 
 programActive = True
@@ -23,6 +25,11 @@ while(programActive):
     print("The program is now listening for standard notation input")
     
     userInput: str = input()
+
+    if userInput == "4":
+
+        node = Tree.node(copy.deepcopy(pyraminx), 0)
+        solver = solver.solver(node)
 
     if userInput == "3":
         
